@@ -27,7 +27,7 @@ func precompileFolder(dir string) {
 			return err
 		}
 
-		// Sprawdzenie, czy plik ma rozszerzenie .mdx
+		// Check if the file has
 		if !info.IsDir() && filepath.Ext(info.Name()) == ".mdx" {
 			precompileFile(path)
 		}
@@ -37,7 +37,7 @@ func precompileFolder(dir string) {
 
 func precompileFile(filename string) {
 	fmt.Println("Precompiling", filename)
-	newFilename := strings.Replace("../../output/"+filename, ".mdx", ".md", -1)
+	newFilename := strings.Replace("../.documentation/"+filename, ".mdx", ".md", -1)
 	os.MkdirAll(filepath.Dir(newFilename), 0755)
 	old, _ := os.Open(filename)
 	defer old.Close()
